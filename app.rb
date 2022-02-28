@@ -65,13 +65,13 @@ class Toodledo
 
   end
   
-  def task_put_url
+#   def task_put_url
     "http://api.toodledo.com/3/tasks/edit.php"
 # 	access_token=yourtoken
 # 	tasks=[{"id"%3A"1234"%2C"title"%3A"My Task"}%2C{"id"%3A"1235"%2C"title"%3A"Another Task"%2C"star"%3A"1"}
 # %2C{"id"%3A"5678"%2C"title"%3A"Invalid"}]
 # 	fields=folder,star
-  end
+#   end
 
   def get_task_pages(url, page, start, alltasks, total)
 
@@ -225,7 +225,7 @@ end
 get "/profile" do
 
   @url = toodledo.task_get_url + "access_token=#{$token}&fields=folder,duedate"
-  @taskUpdateUrl = toodle.task_put_url
+#   @taskUpdateUrl = toodle.task_put_url
   # @url = "http://api.toodledo.com/3/tasks/get.php?access_token=#{session[:access_token]}&fields=folder,star,priority"
   
   #response = HTTP
@@ -256,7 +256,7 @@ get "/profile" do
     completed = toodledo.today_tasks_sorted(@today_tasks)[:completed]
     todo = toodledo.today_tasks_sorted(@today_tasks)[:todo]
     
-    @move_tasks = tasks_to_update(@today_tasks)
+#     @move_tasks = tasks_to_update(@today_tasks)
 
     @reward = completed.count >=1 && todo.count == 0
 
@@ -312,7 +312,6 @@ get "/profile" do
   #       <p>Url:<%= @url %></p>'
   erb '<p>Total task Count: <%= @data %></p>
         <p>Today: <%= @today_tasks %>
-        <p>Move: <%= @move_tasks %>
         <p>Reward? <%= @reward %></p>
         <p>Dispatch? <%= @newtask ? @newtask : "none"%></p>'
 
