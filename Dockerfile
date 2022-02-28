@@ -1,7 +1,7 @@
-FROM golang:1.12.4-alpine3.9
+FROM ruby
 
 RUN mkdir /app
-COPY main.go /app/main.go
+COPY app.rb /app/app.rb
 WORKDIR /app
 
-ENTRYPOINT go run main.go
+ENTRYPOINT bundle exec rackup config.ru
